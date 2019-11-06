@@ -14,8 +14,8 @@ function parseResponse (response) {
   const separatorIndex = response.indexOf(EMPTY_LINE);
   const firstLine = response.toString('utf-8', 0, lfIndex);
   const headersRaw = response.toString('utf-8', lfIndex + 1, separatorIndex);
-  const data = Buffer.allocUnsafe(response.length - separatorIndex - 2);
-  response.copy(data, 0, separatorIndex + 2);
+  const data = Buffer.allocUnsafe(response.length - separatorIndex - 4);
+  response.copy(data, 0, separatorIndex + 4);
   let regMatch = HTTP_RESPONSE_LINE.exec(firstLine);
   let statusCode;
   let statusMessage;
